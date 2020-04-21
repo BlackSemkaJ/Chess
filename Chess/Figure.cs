@@ -12,15 +12,32 @@ namespace Chess
         whiteQueen = 'Q',
         whiteRook = 'R',
         whiteBishop = 'B',
-        whiteknight = 'N',
+        whiteKnight = 'N',
         whitePawn = 'P',
 
         blackKing = 'k',
         blackQueen = 'q',
         blackRook = 'r',
         blackBishop = 'b',
-        blackknight = 'n',
+        blackKnight = 'n',
         blackPawn = 'p'
 
+    }
+
+    static class FigureMethods
+    {
+        public static Color GetColor (this Figure figure)
+        {
+            if (figure == Figure.none)
+                return Color.none;
+            return (figure == Figure.whiteKing ||
+                    figure == Figure.whiteQueen ||
+                    figure == Figure.whiteRook ||
+                    figure == Figure.whiteBishop ||
+                    figure == Figure.whiteKnight ||
+                    figure == Figure.whitePawn)
+                ? Color.white
+                : Color.black;
+        }
     }
 }
