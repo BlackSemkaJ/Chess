@@ -9,7 +9,7 @@ namespace DemoChes
         static void Main(string[] args)
         {
             Random random = new Random();
-            Chess.Chess chess = new Chess.Chess()//"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+            Chess.Chess chess = new Chess.Chess();//"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
             List<string> list;
             while (true)
             {
