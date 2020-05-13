@@ -11,7 +11,7 @@ namespace ChessAPI.Controllers
     {
         public string GetVersion()
         {
-            return "pre-reliase 0.0.1";
+            return "0.1";
         }
     }
 }
