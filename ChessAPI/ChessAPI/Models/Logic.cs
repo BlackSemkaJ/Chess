@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.Xml;
 using System.Web;
 
+
 namespace ChessAPI.Models
 {
     public class Logic
@@ -32,12 +33,13 @@ namespace ChessAPI.Models
             if (game == null)
                 return game;
             Chess.Chess chess = new Chess.Chess(game.FEN);
-            Chess.Chess chessNext = Chess.Chess.FigureMoving(move);
+            Chess.Chess chessNext = chess.Move(move);
+            
             if (chessNext.fen == game.FEN)
                 return game;
 
             game.FEN = chessNext.fen;
-            if (chessNext.IsCheckmate || chess.IsStatemate)
+            if (chessNext.IsCheck || chess.IsCheckAfterMove)
                 game.STATUS = "done";
             db.Entry(game).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
@@ -52,7 +54,7 @@ namespace ChessAPI.Models
         private Game CreateNewGame()
         {
             Game game = new Game();
-            Chess chess = new Chess(); // подключение ChessRules (добавить в референс)
+            Chess.Chess chess = new Chess.Chess(); // подключение ChessRules (добавить в референс)
             game.FEN = chess.fen;
           //  game.FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"; //начальная позиция
             game.STATUS = "play";
