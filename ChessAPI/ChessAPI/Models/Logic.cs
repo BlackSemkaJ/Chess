@@ -31,8 +31,8 @@ namespace ChessAPI.Models
             Game game = GetGame(id);
             if (game == null)
                 return game;
-            Chess chess = new Chess(game.FEN);
-            Chess chessNext = chess.Move(move);
+            Chess.Chess chess = new Chess.Chess(game.FEN);
+            Chess.Chess chessNext = Chess.Chess.FigureMoving(move);
             if (chessNext.fen == game.FEN)
                 return game;
 
